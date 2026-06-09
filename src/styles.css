@@ -93,9 +93,17 @@ h1 {
 .profile-avatar {
   width: 76px;
   aspect-ratio: 1;
-  border: 2px solid #1d4ed8;
   border-radius: 999px;
+}
+
+.profile-avatar-blue {
+  border: 2px solid #1d4ed8;
   background: #60a5fa;
+}
+
+.profile-avatar-red {
+  border: 2px solid #dc2626;
+  background: #f0442b;
 }
 
 .profile-heading {

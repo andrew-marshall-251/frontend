@@ -1,20 +1,54 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Pencil } from "lucide-react";
 
-export function ProfileCard({ profile, showEditAction = false }) {
+export function ProfileCard({
+  profile,
+  showEditAction = false,
+  avatarVariant = "blue",
+}) {
   const [editMenuOpen, setEditMenuOpen] = useState(false);
+  const actionsRef = useRef(null);
+
+  useEffect(() => {
+    if (!editMenuOpen) {
+      return undefined;
+    }
+
+    function handlePointerDown(event) {
+      if (!actionsRef.current?.contains(event.target)) {
+        setEditMenuOpen(false);
+      }
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setEditMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [editMenuOpen]);
 
   return (
     <section className="profile-card" aria-label={`${profile.username} profile`}>
       <div className="profile-card-top">
-        <div className="profile-avatar" aria-hidden="true" />
+        <div
+          className={`profile-avatar profile-avatar-${avatarVariant}`}
+          aria-hidden="true"
+        />
         <div className="profile-heading">
           <h1>{profile.username}</h1>
           <div className="profile-meta">
             <span>Blogger since {profile.bloggerSince}</span>
             {showEditAction ? (
-              <span className="profile-actions">
+              <span className="profile-actions" ref={actionsRef}>
                 <button
                   type="button"
                   className="profile-more-button"
