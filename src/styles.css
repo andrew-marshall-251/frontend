@@ -76,8 +76,10 @@ h1 {
 }
 
 .profile-card {
+  width: min(100%, 560px);
   display: grid;
   gap: 14px;
+  justify-self: center;
   padding: 22px 28px;
 }
 
@@ -139,10 +141,10 @@ h1 {
 }
 
 .profile-posts-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 16px;
+  display: flex;
+  gap: 14px;
   align-items: center;
+  padding-inline: 12px;
 }
 
 .profile-posts-header h2 {
@@ -317,12 +319,8 @@ h1 {
   }
 
   .profile-posts-header {
-    grid-template-columns: 1fr;
     gap: 10px;
-  }
-
-  .new-post-link {
-    justify-self: start;
+    flex-wrap: wrap;
   }
 }
 
