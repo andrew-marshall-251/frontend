@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
@@ -210,6 +211,10 @@ export default function EditProfile() {
         <Button type="submit" className="register-submit">
           Save Changes
         </Button>
+
+        <p className="auth-switch">
+          Want to change your password? <Link to="/new-password">Change Password</Link>
+        </p>
       </form>
     </section>
   );
