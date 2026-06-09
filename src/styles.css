@@ -26,6 +26,7 @@ h1 {
 }
 
 .auth-page,
+.create-post-page,
 .feed-page,
 .profile-page,
 .register-page {
@@ -48,6 +49,14 @@ h1 {
 
 .login-form {
   width: min(100%, 360px);
+}
+
+.create-post-form {
+  width: min(100%, 680px);
+}
+
+.post-body-editor {
+  min-height: 180px;
 }
 
 .feed-panel {

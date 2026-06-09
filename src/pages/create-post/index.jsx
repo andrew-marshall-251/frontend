@@ -1,3 +1,9 @@
+import { PostForm } from "../../components/posts/PostForm";
+
 export default function CreatePost() {
-  return <h1>Create Post</h1>;
+  return (
+    <section className="create-post-page">
+      <PostForm title="Create Post" submitLabel="Publish" />
+    </section>
+  );
 }
