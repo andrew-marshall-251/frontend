@@ -285,6 +285,33 @@ h1 {
   align-items: start;
 }
 
+.comment-item {
+  border-radius: 8px;
+  padding: 6px;
+  margin: -6px;
+}
+
+.comment-item-highlighted {
+  animation: comment-highlight 1400ms ease;
+}
+
+@keyframes comment-highlight {
+  0% {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  42.857% {
+    background: #bfdbfe;
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 18%);
+  }
+
+  100% {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
 .comment-avatar {
   display: inline-block;
   width: 22px;
@@ -342,8 +369,21 @@ h1 {
 }
 
 .reply-context {
+  appearance: none;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  width: 100%;
   grid-template-columns: auto minmax(0, 1fr);
   margin-bottom: 6px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.reply-context:hover {
+  background: #bfdbfe;
 }
 
 .reply-target p,
