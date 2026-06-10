@@ -83,6 +83,7 @@ h1 {
 }
 
 .profile-card,
+.admin-panel,
 .profile-posts-panel {
   border: 1px solid #bfdbfe;
   border-radius: 8px;
@@ -224,6 +225,100 @@ h1 {
   display: grid;
   gap: 18px;
   padding: 28px;
+}
+
+.admin-panel {
+  width: min(100%, var(--profile-card-max-width));
+  display: grid;
+  gap: 24px;
+  justify-self: center;
+  padding: 24px 28px;
+}
+
+.admin-panel h2 {
+  width: fit-content;
+  min-width: 160px;
+  justify-self: center;
+  margin: 0;
+  border: 1px solid #1d4ed8;
+  border-radius: 4px;
+  padding: 8px 24px;
+  background: #3b82f6;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.admin-list-section {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-list-section h3,
+.admin-new-item label {
+  margin: 0;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.admin-editable-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-editable-list li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, max-content) auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 34px;
+}
+
+.admin-list-number {
+  color: #1f2937;
+  font-weight: 600;
+  text-align: right;
+}
+
+.admin-list-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-icon-button {
+  width: 32px;
+  min-height: 30px;
+  padding: 0;
+  color: #1d4ed8;
+}
+
+.admin-icon-button svg {
+  stroke: currentColor;
+}
+
+.admin-new-item {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.admin-new-item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 34px;
+}
+
+.admin-list-input,
+.admin-new-item-row .ui-input {
+  min-height: 34px;
 }
 
 .profile-posts-header {
@@ -547,6 +642,28 @@ h1 {
 
 .ui-button-ghost:hover {
   background: #dbeafe;
+}
+
+.admin-icon-button.ui-button {
+  width: 32px;
+  min-width: 32px;
+  min-height: 30px;
+  border-color: transparent;
+  padding: 0;
+  background: transparent;
+  color: #1d4ed8;
+}
+
+.admin-icon-button.ui-button:hover {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.admin-icon-button.ui-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
 }
 
 .ui-select-trigger {
