@@ -1292,10 +1292,6 @@ h1 {
   transform: translateY(-1px);
 }
 
-.star-toggle:focus-visible .star-toggle-icon {
-  transform: translateY(-1px);
-}
-
 .star-toggle:focus-visible {
   outline: none;
   opacity: 0.9;

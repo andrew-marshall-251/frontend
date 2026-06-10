@@ -17,7 +17,10 @@ export function StarToggleButton({
       aria-pressed={isStarred}
       aria-label={`${isStarred ? "Unstar" : "Star"} ${label}`}
       title={`${isStarred ? "Unstar" : "Star"} ${label}`}
-      onClick={() => setIsStarred((current) => !current)}
+      onClick={(event) => {
+        setIsStarred((current) => !current);
+        event.currentTarget.blur();
+      }}
     >
       <span className="star-toggle-icon" aria-hidden="true">
         <Star size={size} fill={isStarred ? "currentColor" : "none"} />
