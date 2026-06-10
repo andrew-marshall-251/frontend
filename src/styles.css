@@ -201,15 +201,55 @@ h1 {
   font-weight: 700;
 }
 
-.post-detail-edit-link {
+.post-owner-actions {
+  position: relative;
+  display: inline-flex;
+}
+
+.post-detail-more-button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
   color: #111827;
+  font: inherit;
   font-weight: 800;
   line-height: 1;
+  cursor: pointer;
+}
+
+.post-detail-more-button:hover {
+  text-decoration: underline;
+}
+
+.post-owner-action-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  width: 150px;
+  padding: 6px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgb(15 23 42 / 16%);
+}
+
+.post-owner-action-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  border-radius: 6px;
+  padding: 0 10px;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 700;
   text-decoration: none;
 }
 
-.post-detail-edit-link:hover {
-  text-decoration: underline;
+.post-owner-action-menu-item:hover {
+  background: #dbeafe;
 }
 
 .post-detail-body {

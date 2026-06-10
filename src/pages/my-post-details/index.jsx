@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { CornerUpLeft, Trash2, Star } from "lucide-react";
+import { CornerUpLeft, Pencil, Trash2, Star } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Textarea } from "../../components/ui/textarea";
 
@@ -110,6 +110,59 @@ function CommentMenu({ comment }) {
   );
 }
 
+function PostOwnerMenu() {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    function handlePointerDown(event) {
+      if (!menuRef.current?.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <span className="post-owner-actions" ref={menuRef}>
+      <button
+        type="button"
+        className="post-detail-more-button"
+        aria-label="Post actions"
+        aria-expanded={open}
+        onClick={() => setOpen((current) => !current)}
+      >
+        ...
+      </button>
+      {open ? (
+        <div className="post-owner-action-menu" role="menu">
+          <Link className="post-owner-action-menu-item" to="/edit-post" role="menuitem">
+            <Pencil size={16} aria-hidden="true" />
+            Edit Post
+          </Link>
+        </div>
+      ) : null}
+    </span>
+  );
+}
+
 function AvatarPair({ comment }) {
   if (!comment.replyingTo) {
     return <span className={`comment-avatar comment-avatar-${comment.color}`} />;
@@ -148,9 +201,7 @@ export default function MyPostDetails() {
               <Star size={16} fill="currentColor" aria-hidden="true" />
               {post.stars}
             </span>
-            <Link className="post-detail-edit-link" to="/edit-post">
-              ...
-            </Link>
+            <PostOwnerMenu />
           </div>
         </header>
 
