@@ -226,6 +226,17 @@ export default function AdminProfile() {
       <div className="profile-layout">
         <ProfileCard profile={profile} showEditAction />
 
+        <section className="profile-posts-panel" aria-label="My posts">
+          <div className="profile-posts-header">
+            <h2>My Posts</h2>
+            <Link className="new-post-link" to="/create-post">
+              <Pencil size={16} aria-hidden="true" />
+              Write a new post
+            </Link>
+          </div>
+          <PostList posts={posts} />
+        </section>
+
         <section className="admin-panel" aria-label="Admin controls">
           <AdminEditableList
             title="Mascots"
@@ -239,17 +250,6 @@ export default function AdminProfile() {
             fallbackItems={fallbackThreads}
             newItemLabel="New Thread"
           />
-        </section>
-
-        <section className="profile-posts-panel" aria-label="My posts">
-          <div className="profile-posts-header">
-            <h2>My Posts</h2>
-            <Link className="new-post-link" to="/create-post">
-              <Pencil size={16} aria-hidden="true" />
-              Write a new post
-            </Link>
-          </div>
-          <PostList posts={posts} />
         </section>
       </div>
     </section>
