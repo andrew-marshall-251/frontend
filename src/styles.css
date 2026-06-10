@@ -235,22 +235,6 @@ h1 {
   padding: 24px 28px;
 }
 
-.admin-panel h2 {
-  width: fit-content;
-  min-width: 160px;
-  justify-self: center;
-  margin: 0;
-  border: 1px solid #1d4ed8;
-  border-radius: 4px;
-  padding: 8px 24px;
-  background: #3b82f6;
-  color: #ffffff;
-  font-size: 18px;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .admin-list-section {
   display: grid;
   gap: 10px;
@@ -260,8 +244,16 @@ h1 {
 .admin-new-item label {
   margin: 0;
   color: #1f2937;
-  font-size: 15px;
   font-weight: 700;
+}
+
+.admin-list-section h3 {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.admin-new-item label {
+  font-size: 15px;
 }
 
 .admin-editable-list {

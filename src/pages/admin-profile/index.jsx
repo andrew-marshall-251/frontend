@@ -227,7 +227,6 @@ export default function AdminProfile() {
         <ProfileCard profile={profile} showEditAction />
 
         <section className="admin-panel" aria-label="Admin controls">
-          <h2>Admin</h2>
           <AdminEditableList
             title="Mascots"
             endpoint="http://localhost:8080/api/mascots"
