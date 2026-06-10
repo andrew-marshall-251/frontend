@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { CornerUpLeft, Star, Trash2 } from "lucide-react";
+import { CornerUpLeft, Trash2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Textarea } from "../../components/ui/textarea";
+import { StarToggleButton } from "../../components/ui/star-toggle";
 import {
   comments as fallbackComments,
   formatTimestamp,
@@ -195,10 +196,12 @@ export default function PostDetails() {
           <h1>{post.title}</h1>
           <div className="post-detail-meta">
             <span>by {post.authorUsername}</span>
-            <span className="post-detail-stars" aria-label={`${post.stars} stars`}>
-              <Star size={16} fill="currentColor" aria-hidden="true" />
-              {post.stars}
-            </span>
+            <StarToggleButton
+              className="post-detail-stars"
+              count={post.stars}
+              label={`post ${post.title}`}
+              size={16}
+            />
           </div>
         </header>
 

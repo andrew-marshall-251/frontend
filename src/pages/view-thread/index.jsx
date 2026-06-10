@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
 import { PostList } from "../../components/posts/PostList";
+import { StarToggleButton } from "../../components/ui/star-toggle";
 import { fallbackPosts, normalizePosts } from "../../lib/posts";
 
 const fallbackThread = {
@@ -68,10 +68,12 @@ export default function ViewThread() {
       <div className="feed-panel">
         <div className="thread-detail-header">
           <h1>{thread.name}</h1>
-          <span className="thread-detail-stars" aria-label={`${thread.stars} stars`}>
-            <Star size={18} fill="currentColor" aria-hidden="true" />
-            {thread.stars}
-          </span>
+          <StarToggleButton
+            className="thread-detail-stars"
+            count={thread.stars}
+            label={`thread ${thread.name}`}
+            size={18}
+          />
         </div>
         <PostList posts={thread.posts} />
       </div>

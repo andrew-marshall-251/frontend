@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { CornerUpLeft, Pencil, Trash2, Star } from "lucide-react";
+import { CornerUpLeft, Pencil, Trash2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Textarea } from "../../components/ui/textarea";
+import { StarToggleButton } from "../../components/ui/star-toggle";
 
 export const post = {
   title: "How to Live like a Robot",
@@ -365,10 +366,12 @@ export default function MyPostDetails() {
           <h1>{post.title}</h1>
           <div className="post-detail-meta">
             <span>by {post.authorUsername}</span>
-            <span className="post-detail-stars" aria-label={`${post.stars} stars`}>
-              <Star size={16} fill="currentColor" aria-hidden="true" />
-              {post.stars}
-            </span>
+            <StarToggleButton
+              className="post-detail-stars"
+              count={post.stars}
+              label={`post ${post.title}`}
+              size={16}
+            />
             <PostOwnerMenu />
           </div>
         </header>

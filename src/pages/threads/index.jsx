@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FileText, Star } from "lucide-react";
+import { FileText } from "lucide-react";
+import { StarToggleButton } from "../../components/ui/star-toggle";
 
 const fallbackThreads = [
   { id: "robots", name: "ROBOTS", posts: 3, stars: 6 },
@@ -80,21 +81,23 @@ export default function Threads() {
     <section className="view-threads-page">
       <div className="thread-list-panel">
         {threads.map((thread) => (
-          <Link className="thread-list-link" to="/view-thread" key={thread.id}>
-            <article className="thread-list-item">
+          <article className="thread-list-item" key={thread.id}>
+            <Link className="thread-list-link" to="/view-thread">
               <h1>{thread.name}</h1>
-              <div className="thread-list-metrics">
-                <span aria-label={`${thread.posts} posts`}>
-                  <FileText size={16} aria-hidden="true" />
-                  {thread.posts}
-                </span>
-                <span aria-label={`${thread.stars} stars`}>
-                  <Star size={16} fill="currentColor" aria-hidden="true" />
-                  {thread.stars}
-                </span>
-              </div>
-            </article>
-          </Link>
+            </Link>
+            <div className="thread-list-metrics">
+              <span aria-label={`${thread.posts} posts`}>
+                <FileText size={16} aria-hidden="true" />
+                {thread.posts}
+              </span>
+              <StarToggleButton
+                className="thread-list-star"
+                count={thread.stars}
+                label={`thread ${thread.name}`}
+                size={16}
+              />
+            </div>
+          </article>
         ))}
       </div>
     </section>

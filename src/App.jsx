@@ -13,10 +13,20 @@ import EditProfile from "./pages/edit-profile/index.jsx";
 import Register from "./pages/register/index.jsx";
 import Login from "./pages/login/index.jsx";
 import NewPassword from "./pages/new-password/index.jsx";
+import { SiteNav } from "./components/navigation/SiteNav.jsx";
 
 export default function App() {
+  const mockAuth = {
+    isLoggedIn: true,
+    user: {
+      username: "AndMarsh",
+      avatarVariant: "blue",
+    },
+  };
+
   return (
     <main className="page-shell">
+      <SiteNav isLoggedIn={mockAuth.isLoggedIn} user={mockAuth.user} />
       <Routes>
         <Route path="/" element={<Navigate to="/feed" replace />} />
         <Route path="/admin-profile" element={<AdminProfile />} />
