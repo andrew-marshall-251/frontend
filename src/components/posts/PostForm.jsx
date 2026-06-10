@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import {
@@ -102,57 +103,61 @@ export function PostForm({
   }
 
   return (
-    <form className="auth-form create-post-form" onSubmit={handleSubmit}>
-      <h1>{title}</h1>
+    <Card as="form" className="auth-form create-post-form" onSubmit={handleSubmit}>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
 
-      <div className="form-field">
-        <Label htmlFor="postTitle">Post Title</Label>
-        <Input
-          id="postTitle"
-          name="title"
-          value={form.title}
-          onChange={(event) => updateField("title", event.target.value)}
-          required
-        />
-      </div>
+      <CardContent className="form-card-content">
+        <div className="form-field">
+          <Label htmlFor="postTitle">Post Title</Label>
+          <Input
+            id="postTitle"
+            name="title"
+            value={form.title}
+            onChange={(event) => updateField("title", event.target.value)}
+            required
+          />
+        </div>
 
-      <div className="form-field">
-        <Label htmlFor="thread">Thread</Label>
-        <Select
-          value={form.thread}
-          onValueChange={(value) => updateField("thread", value)}
-        >
-          <SelectTrigger id="thread" aria-label="Select a thread">
-            <SelectValue
-              placeholder={threadsLoading ? "Loading threads..." : "Select a thread"}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            {threads.map((thread) => (
-              <SelectItem key={thread.id} value={thread.id}>
-                {thread.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+        <div className="form-field">
+          <Label htmlFor="thread">Thread</Label>
+          <Select
+            value={form.thread}
+            onValueChange={(value) => updateField("thread", value)}
+          >
+            <SelectTrigger id="thread" aria-label="Select a thread">
+              <SelectValue
+                placeholder={threadsLoading ? "Loading threads..." : "Select a thread"}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              {threads.map((thread) => (
+                <SelectItem key={thread.id} value={thread.id}>
+                  {thread.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-      <div className="form-field">
-        <Label htmlFor="postBody">Post Body</Label>
-        <Textarea
-          id="postBody"
-          name="body"
-          className="post-body-editor"
-          value={form.body}
-          onChange={(event) => updateField("body", event.target.value)}
-          rows={8}
-          required
-        />
-      </div>
+        <div className="form-field">
+          <Label htmlFor="postBody">Post Body</Label>
+          <Textarea
+            id="postBody"
+            name="body"
+            className="post-body-editor"
+            value={form.body}
+            onChange={(event) => updateField("body", event.target.value)}
+            rows={8}
+            required
+          />
+        </div>
 
-      <Button type="submit" className="auth-submit">
-        {submitLabel}
-      </Button>
-    </form>
+        <Button type="submit" className="auth-submit">
+          {submitLabel}
+        </Button>
+      </CardContent>
+    </Card>
   );
 }

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Check, Eye, EyeOff, X } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import {
@@ -52,9 +53,12 @@ export default function NewPassword() {
 
   return (
     <section className="auth-page">
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <h1>New Password</h1>
+      <Card as="form" className="auth-form" onSubmit={handleSubmit}>
+        <CardHeader>
+          <CardTitle>New Password</CardTitle>
+        </CardHeader>
 
+        <CardContent className="form-card-content">
         <div className="form-field">
           <Label htmlFor="oldPassword">Old Password</Label>
           <div className="password-input">
@@ -169,7 +173,8 @@ export default function NewPassword() {
         <Button type="submit" className="auth-submit">
           Change Password
         </Button>
-      </form>
+        </CardContent>
+      </Card>
     </section>
   );
 }

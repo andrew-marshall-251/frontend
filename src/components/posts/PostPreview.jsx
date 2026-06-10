@@ -1,20 +1,29 @@
 import { Link } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import { formatPublishedAt } from "../../lib/posts";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import { StarToggleButton } from "../ui/star-toggle";
 
 export function PostPreview({ post, to = "/post-details" }) {
   return (
-    <article className="post-preview">
+    <Card className="post-preview" as="article">
       <Link className="post-preview-link" to={to}>
-        <div className="post-preview-header">
-          <h2>{post.title}</h2>
-        </div>
-        <p className="post-author">@{post.authorUsername}</p>
-        <p className="post-excerpt">{post.excerpt}</p>
-        <time className="post-timestamp">{formatPublishedAt(post.publishedAt)}</time>
+        <CardHeader className="post-preview-header">
+          <CardTitle>{post.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="post-preview-content">
+          <p className="post-author">@{post.authorUsername}</p>
+          <p className="post-excerpt">{post.excerpt}</p>
+          <time className="post-timestamp">{formatPublishedAt(post.publishedAt)}</time>
+        </CardContent>
       </Link>
-      <div className="post-metrics">
+      <CardFooter className="post-metrics">
         <StarToggleButton
           className="post-metric"
           count={post.stars}
@@ -24,7 +33,7 @@ export function PostPreview({ post, to = "/post-details" }) {
           <MessageCircle size={16} aria-hidden="true" />
           {post.comments}
         </span>
-      </div>
-    </article>
+      </CardFooter>
+    </Card>
   );
 }

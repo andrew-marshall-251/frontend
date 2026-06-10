@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 function NavLinks({ items, onNavigate, className = "" }) {
   return (
@@ -117,16 +119,16 @@ export function SiteNav({ isLoggedIn, user }) {
             to="/my-profile"
             aria-label={`Open ${user.username} profile`}
           >
-            <span
-              className={`site-nav-avatar site-nav-avatar-${user.avatarVariant}`}
-              aria-hidden="true"
-            />
+            <Avatar className={`site-nav-avatar site-nav-avatar-${user.avatarVariant}`} aria-hidden="true">
+              <AvatarFallback>{user.username.slice(0, 2).toUpperCase()}</AvatarFallback>
+            </Avatar>
           </Link>
         ) : null}
       </nav>
 
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="site-nav-menu-button"
         aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={menuOpen}
@@ -134,7 +136,7 @@ export function SiteNav({ isLoggedIn, user }) {
         onClick={() => setMenuOpen((current) => !current)}
       >
         {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-      </button>
+      </Button>
 
       {drawerMounted ? (
         <div
@@ -157,22 +159,25 @@ export function SiteNav({ isLoggedIn, user }) {
                   onClick={closeMenu}
                   aria-label={`Open ${user.username} profile`}
                 >
-                  <span
+                  <Avatar
                     className={`site-nav-avatar site-nav-avatar-${user.avatarVariant}`}
                     aria-hidden="true"
-                  />
+                  >
+                    <AvatarFallback>{user.username.slice(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
                 </Link>
               ) : (
                 <span />
               )}
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="site-nav-drawer-close-button"
                 aria-label="Close navigation menu"
                 onClick={closeMenu}
               >
                 <X size={20} aria-hidden="true" />
-              </button>
+              </Button>
             </div>
             <NavLinks items={drawerItems} onNavigate={closeMenu} className="site-nav-drawer-links" />
           </nav>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { PostList } from "../../components/posts/PostList";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { StarToggleButton } from "../../components/ui/star-toggle";
 import { fallbackPosts, normalizePosts } from "../../lib/posts";
 
@@ -65,8 +66,8 @@ export default function ViewThread() {
 
   return (
     <section className="feed-page">
-      <div className="feed-panel">
-        <div className="thread-detail-header">
+      <Card className="feed-panel">
+        <CardHeader className="thread-detail-header">
           <h1>{thread.name}</h1>
           <StarToggleButton
             className="thread-detail-stars"
@@ -74,9 +75,11 @@ export default function ViewThread() {
             label={`thread ${thread.name}`}
             size={18}
           />
-        </div>
-        <PostList posts={thread.posts} />
-      </div>
+        </CardHeader>
+        <CardContent>
+          <PostList posts={thread.posts} />
+        </CardContent>
+      </Card>
     </section>
   );
 }

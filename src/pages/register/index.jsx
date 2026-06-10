@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check, Eye, EyeOff, X } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import {
@@ -129,9 +130,12 @@ export default function Register() {
 
   return (
     <section className="register-page">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <h1>Register</h1>
+      <Card as="form" className="register-form" onSubmit={handleSubmit}>
+        <CardHeader>
+          <CardTitle>Register</CardTitle>
+        </CardHeader>
 
+        <CardContent className="form-card-content">
         <div className="form-field">
           <Label htmlFor="username">Username</Label>
           <Input
@@ -279,7 +283,8 @@ export default function Register() {
         <Button type="submit" className="register-submit">
           Register
         </Button>
-      </form>
+        </CardContent>
+      </Card>
     </section>
   );
 }

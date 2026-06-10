@@ -4,7 +4,9 @@ import { Pencil, Plus, Save } from "lucide-react";
 import { PostList } from "../../components/posts/PostList";
 import { ProfileCard } from "../../components/profile/ProfileCard";
 import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
 import { usePosts } from "../../hooks/usePosts";
 
 const profile = {
@@ -196,7 +198,7 @@ function AdminEditableList({ title, endpoint, fallbackItems, newItemLabel }) {
       </ol>
 
       <div className="admin-new-item">
-        <label htmlFor={`${title}-new`}>{newItemLabel}</label>
+        <Label htmlFor={`${title}-new`}>{newItemLabel}</Label>
         <div className="admin-new-item-row">
           <Input
             id={`${title}-new`}
@@ -226,18 +228,23 @@ export default function AdminProfile() {
       <div className="profile-layout">
         <ProfileCard profile={profile} showEditAction />
 
-        <section className="profile-posts-panel" aria-label="My posts">
-          <div className="profile-posts-header">
+        <Card as="section" className="profile-posts-panel" aria-label="My posts">
+          <CardHeader className="profile-posts-header">
             <h2>My Posts</h2>
-            <Link className="new-post-link" to="/create-post">
-              <Pencil size={16} aria-hidden="true" />
-              Write a new post
-            </Link>
-          </div>
-          <PostList posts={posts} />
-        </section>
+            <Button asChild variant="ghost" className="new-post-link">
+              <Link to="/create-post">
+                <Pencil size={16} aria-hidden="true" />
+                Write a new post
+              </Link>
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <PostList posts={posts} />
+          </CardContent>
+        </Card>
 
-        <section className="admin-panel" aria-label="Admin controls">
+        <Card as="section" className="admin-panel" aria-label="Admin controls">
+          <CardContent className="admin-panel-content">
           <AdminEditableList
             title="Mascots"
             endpoint="http://localhost:8080/api/mascots"
@@ -250,7 +257,8 @@ export default function AdminProfile() {
             fallbackItems={fallbackThreads}
             newItemLabel="New Thread"
           />
-        </section>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

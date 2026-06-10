@@ -165,6 +165,12 @@ body {
 .site-nav-drawer-avatar {
   display: inline-flex;
   flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.site-nav-avatar-link:hover,
+.site-nav-drawer-avatar:hover {
+  text-decoration: none;
 }
 
 .site-nav-avatar {
@@ -287,6 +293,24 @@ body {
   box-shadow: 0 0 0 3px rgb(147 197 253 / 38%);
 }
 
+.site-nav-menu-button.ui-button,
+.site-nav-drawer-close-button.ui-button {
+  min-height: auto;
+  border-color: transparent;
+  background: transparent;
+  color: var(--nav-fg);
+}
+
+.site-nav-menu-button.ui-button:hover,
+.site-nav-drawer-close-button.ui-button:hover {
+  background: transparent;
+  color: var(--nav-fg);
+}
+
+.site-nav-menu-button.ui-button {
+  display: none;
+}
+
 .site-nav-drawer-links {
   display: grid;
   align-content: start;
@@ -308,6 +332,7 @@ body {
     width: calc(100% - 12px);
     margin-bottom: 18px;
     padding-inline: 16px;
+    padding-left: var(--nav-padding-inline-start);
     gap: 18px;
   }
 
@@ -319,7 +344,7 @@ body {
     display: none;
   }
 
-  .site-nav-menu-button {
+  .site-nav-menu-button.ui-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -328,7 +353,7 @@ body {
 }
 
 @media (min-width: 601px) {
-  .site-nav-menu-button {
+  .site-nav-menu-button.ui-button {
     display: none;
   }
 
@@ -346,13 +371,92 @@ h1 {
   text-transform: capitalize;
 }
 
+.ui-card {
+  color: inherit;
+}
+
+.ui-card-header,
+.ui-card-content,
+.ui-card-footer {
+  min-width: 0;
+}
+
+.ui-card-title {
+  margin: 0;
+}
+
+.feed-panel > .ui-card-header > .ui-card-title,
+.auth-form > .ui-card-header > .ui-card-title,
+.register-form > .ui-card-header > .ui-card-title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.form-card-content {
+  display: grid;
+  gap: 18px;
+}
+
+.ui-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.ui-avatar-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: rgb(15 23 42 / 0%);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ui-badge-secondary {
+  border-color: transparent;
+  background: #eff8ff;
+  color: #475569;
+}
+
+.ui-separator {
+  height: 1px;
+  width: 100%;
+  background: #bfdbfe;
+}
+
+.ui-separator-vertical {
+  width: 1px;
+  height: 100%;
+}
+
 .auth-page,
 .create-post-page,
 .feed-page,
 .post-detail-page,
 .profile-page,
 .view-threads-page,
-.register-page {
+.register-page,
+.links-page {
   min-height: calc(100vh - var(--nav-height));
   display: grid;
   place-items: start center;
@@ -392,6 +496,60 @@ h1 {
   border-radius: 8px;
   background: #eff8ff;
   box-shadow: 0 16px 40px rgb(15 23 42 / 8%);
+}
+
+.links-panel {
+  width: min(100%, var(--panel-max-width));
+  display: grid;
+  gap: 22px;
+  padding: 28px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff8ff;
+  box-shadow: 0 16px 40px rgb(15 23 42 / 8%);
+}
+
+.links-panel .ui-card-title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.links-grid-item {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.links-grid-item span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.links-grid-item:hover,
+.links-grid-item:focus-visible {
+  background: #dbeafe;
+  box-shadow: 0 10px 24px rgb(37 99 235 / 10%);
+  transform: translateY(-1px);
 }
 
 .thread-list-panel {
@@ -1195,6 +1353,7 @@ h1 {
 
   .auth-form,
   .feed-panel,
+  .links-panel,
   .profile-card,
   .profile-posts-panel,
   .register-form {
@@ -1203,6 +1362,10 @@ h1 {
 
   .feed-panel {
     gap: 20px;
+  }
+
+  .links-grid {
+    grid-template-columns: 1fr;
   }
 
   .post-preview {
@@ -1266,6 +1429,7 @@ h1 {
 
   .auth-form,
   .feed-panel,
+  .links-panel,
   .profile-card,
   .profile-posts-panel,
   .register-form {

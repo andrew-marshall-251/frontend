@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button } from "../../components/ui/button";
 
 export default function Home() {
   return (
@@ -10,9 +11,9 @@ export default function Home() {
           Welcome to Idle Moments, the simple, cozy, hobby only discussion forum. Share your
           hobbies, not your work.
         </p>
-        <Link className="ui-button home-hero-button" to="/register">
-          Create Account
-        </Link>
+        <Button asChild className="home-hero-button">
+          <Link to="/register">Create Account</Link>
+        </Button>
       </div>
     </section>
   );

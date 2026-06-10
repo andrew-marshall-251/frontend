@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 
@@ -22,9 +23,12 @@ export default function Login() {
 
   return (
     <section className="auth-page">
-      <form className="auth-form login-form" onSubmit={handleSubmit}>
-        <h1>Login</h1>
+      <Card as="form" className="auth-form login-form" onSubmit={handleSubmit}>
+        <CardHeader>
+          <CardTitle>Login</CardTitle>
+        </CardHeader>
 
+        <CardContent className="form-card-content">
         <div className="form-field">
           <Label htmlFor="usernameOrEmail">Username or Email</Label>
           <Input
@@ -64,7 +68,7 @@ export default function Login() {
           </div>
         </div>
 
-        <Link className="forgot-password-link" to="/new-password">
+        <Link className="forgot-password-link" to="/forgot-password">
           Forgot password?
         </Link>
 
@@ -75,7 +79,8 @@ export default function Login() {
         <p className="auth-switch">
           Don&apos;t have an account? <Link to="/register">Register Here</Link>
         </p>
-      </form>
+        </CardContent>
+      </Card>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { PostList } from "../../components/posts/PostList";
 import { ProfileCard } from "../../components/profile/ProfileCard";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { usePosts } from "../../hooks/usePosts";
 
 const profile = {
@@ -17,15 +18,18 @@ export default function UserProfile() {
       <div className="profile-layout">
         <ProfileCard profile={profile} avatarVariant="red" />
 
-        <section
+        <Card
+          as="section"
           className="profile-posts-panel"
           aria-label={`${profile.username}'s posts`}
         >
-          <div className="profile-posts-header">
+          <CardHeader className="profile-posts-header">
             <h2>{profile.username}&apos;s Posts</h2>
-          </div>
-          <PostList posts={posts} />
-        </section>
+          </CardHeader>
+          <CardContent>
+            <PostList posts={posts} />
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

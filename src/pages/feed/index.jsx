@@ -1,4 +1,5 @@
 import { PostList } from "../../components/posts/PostList";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { usePosts } from "../../hooks/usePosts";
 
 export default function Feed() {
@@ -6,10 +7,14 @@ export default function Feed() {
 
   return (
     <section className="feed-page">
-      <div className="feed-panel">
-        <h1>Feed</h1>
-        <PostList posts={posts} />
-      </div>
+      <Card className="feed-panel">
+        <CardHeader>
+          <CardTitle>Feed</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <PostList posts={posts} />
+        </CardContent>
+      </Card>
     </section>
   );
 }

@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Pencil } from "lucide-react";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Badge } from "../ui/badge";
+import { Card, CardContent, CardHeader } from "../ui/card";
 
 export function ProfileCard({
   profile,
@@ -37,16 +40,15 @@ export function ProfileCard({
   }, [editMenuOpen]);
 
   return (
-    <section className="profile-card" aria-label={`${profile.username} profile`}>
-      <div className="profile-card-top">
-        <div
-          className={`profile-avatar profile-avatar-${avatarVariant}`}
-          aria-hidden="true"
-        />
+    <Card as="section" className="profile-card" aria-label={`${profile.username} profile`}>
+      <CardHeader className="profile-card-top">
+        <Avatar className={`profile-avatar profile-avatar-${avatarVariant}`} aria-hidden="true">
+          <AvatarFallback>{profile.username.slice(0, 2).toUpperCase()}</AvatarFallback>
+        </Avatar>
         <div className="profile-heading">
           <h1>{profile.username}</h1>
           <div className="profile-meta">
-            <span>Blogger since {profile.bloggerSince}</span>
+            <Badge variant="secondary">Blogger since {profile.bloggerSince}</Badge>
             {showEditAction ? (
               <span className="profile-actions" ref={actionsRef}>
                 <button
@@ -74,8 +76,10 @@ export function ProfileCard({
             ) : null}
           </div>
         </div>
-      </div>
-      <p className="profile-bio">{profile.bio}</p>
-    </section>
+      </CardHeader>
+      <CardContent>
+        <p className="profile-bio">{profile.bio}</p>
+      </CardContent>
+    </Card>
   );
 }

@@ -13,7 +13,9 @@ import EditProfile from "./pages/edit-profile/index.jsx";
 import Register from "./pages/register/index.jsx";
 import Login from "./pages/login/index.jsx";
 import NewPassword from "./pages/new-password/index.jsx";
+import ForgotPassword from "./pages/forgot-password/index.jsx";
 import Home from "./pages/home/index.jsx";
+import Links from "./pages/links/index.jsx";
 import { SiteNav } from "./components/navigation/SiteNav.jsx";
 
 export default function App() {
@@ -49,7 +51,9 @@ export default function App() {
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/new-password" element={<NewPassword />} />
+        <Route path="/links" element={<Links />} />
       </Routes>
     </main>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FileText } from "lucide-react";
+import { Card, CardContent } from "../../components/ui/card";
 import { StarToggleButton } from "../../components/ui/star-toggle";
 
 const fallbackThreads = [
@@ -81,11 +82,11 @@ export default function Threads() {
     <section className="view-threads-page">
       <div className="thread-list-panel">
         {threads.map((thread) => (
-          <article className="thread-list-item" key={thread.id}>
+          <Card as="article" className="thread-list-item" key={thread.id}>
             <Link className="thread-list-link" to="/view-thread">
               <h1>{thread.name}</h1>
             </Link>
-            <div className="thread-list-metrics">
+            <CardContent className="thread-list-metrics">
               <span aria-label={`${thread.posts} posts`}>
                 <FileText size={16} aria-hidden="true" />
                 {thread.posts}
@@ -96,8 +97,8 @@ export default function Threads() {
                 label={`thread ${thread.name}`}
                 size={16}
               />
-            </div>
-          </article>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>

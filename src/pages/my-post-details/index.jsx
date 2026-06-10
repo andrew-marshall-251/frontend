@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { CornerUpLeft, Pencil, Trash2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Textarea } from "../../components/ui/textarea";
 import { StarToggleButton } from "../../components/ui/star-toggle";
 
@@ -361,8 +362,8 @@ export default function MyPostDetails() {
 
   return (
     <section className="post-detail-page">
-      <article className="post-detail-panel">
-        <header className="post-detail-header">
+      <Card as="article" className="post-detail-panel">
+        <CardHeader className="post-detail-header">
           <h1>{post.title}</h1>
           <div className="post-detail-meta">
             <span>by {post.authorUsername}</span>
@@ -374,10 +375,12 @@ export default function MyPostDetails() {
             />
             <PostOwnerMenu />
           </div>
-        </header>
+        </CardHeader>
 
-        <p className="post-detail-body">{post.body}</p>
-        <time className="post-detail-timestamp">{formatTimestamp(post.publishedAt)}</time>
+        <CardContent className="post-detail-content">
+          <p className="post-detail-body">{post.body}</p>
+          <time className="post-detail-timestamp">{formatTimestamp(post.publishedAt)}</time>
+        </CardContent>
 
         <section className="comments-section" aria-label="Comments">
           <h2>Comments</h2>
@@ -414,7 +417,8 @@ export default function MyPostDetails() {
 
           <div className="comment-list">
             {comments.map((comment) => (
-              <article
+              <Card
+                as="article"
                 className={`comment-item ${
                   highlightedCommentId === comment.id ? "comment-item-highlighted" : ""
                 }`}
@@ -457,11 +461,11 @@ export default function MyPostDetails() {
                     Reply
                   </button>
                 </div>
-              </article>
+              </Card>
             ))}
           </div>
         </section>
-      </article>
+      </Card>
     </section>
   );
 }

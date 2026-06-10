@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import {
@@ -146,9 +147,12 @@ export default function EditProfile() {
 
   return (
     <section className="register-page">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <h1>Edit Profile</h1>
+      <Card as="form" className="register-form" onSubmit={handleSubmit}>
+        <CardHeader>
+          <CardTitle>Edit Profile</CardTitle>
+        </CardHeader>
 
+        <CardContent className="form-card-content">
         <div className="form-field">
           <Label htmlFor="editUsername">Username</Label>
           <Input
@@ -215,7 +219,8 @@ export default function EditProfile() {
         <p className="auth-switch">
           Want to change your password? <Link to="/new-password">Change Password</Link>
         </p>
-      </form>
+        </CardContent>
+      </Card>
     </section>
   );
 }
