@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AdminProfile from "./pages/admin-profile/index.jsx";
 import Feed from "./pages/feed/index.jsx";
 import PostDetails from "./pages/post-details/index.jsx";
+import MyPostDetails from "./pages/my-post-details/index.jsx";
 import MyProfile from "./pages/my-profile/index.jsx";
 import EditPost from "./pages/edit-post/index.jsx";
 import CreatePost from "./pages/create-post/index.jsx";
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/admin-profile" element={<AdminProfile />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post-details" element={<PostDetails />} />
+        <Route path="/my-post-details" element={<MyPostDetails />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/edit-post" element={<EditPost />} />
         <Route path="/create-post" element={<CreatePost />} />
