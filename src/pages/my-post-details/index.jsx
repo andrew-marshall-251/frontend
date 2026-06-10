@@ -163,19 +163,6 @@ function PostOwnerMenu() {
   );
 }
 
-function AvatarPair({ comment }) {
-  if (!comment.replyingTo) {
-    return <span className={`comment-avatar comment-avatar-${comment.color}`} />;
-  }
-
-  return (
-    <span className="comment-avatar-pair" aria-hidden="true">
-      <span className={`comment-avatar comment-avatar-${comment.color}`} />
-      <span className={`comment-avatar comment-avatar-${comment.replyingTo.color}`} />
-    </span>
-  );
-}
-
 export default function MyPostDetails() {
   const [commentValue, setCommentValue] = useState("");
   const [replyTarget, setReplyTarget] = useState(null);
@@ -244,7 +231,10 @@ export default function MyPostDetails() {
           <div className="comment-list">
             {comments.map((comment) => (
               <article className="comment-item" key={comment.id}>
-                <AvatarPair comment={comment} />
+                <span
+                  className={`comment-avatar comment-avatar-${comment.color}`}
+                  aria-hidden="true"
+                />
                 <div className="comment-content">
                   {comment.replyingTo ? (
                     <div className="reply-context">

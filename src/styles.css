@@ -314,26 +314,6 @@ h1 {
   background: #f0442b;
 }
 
-.comment-avatar-pair {
-  position: relative;
-  width: 34px;
-  min-height: 24px;
-}
-
-.comment-avatar-pair .comment-avatar {
-  position: absolute;
-  top: 0;
-}
-
-.comment-avatar-pair .comment-avatar:first-child {
-  left: 0;
-  z-index: 2;
-}
-
-.comment-avatar-pair .comment-avatar:last-child {
-  left: 12px;
-}
-
 .comment-composer-body {
   display: grid;
   gap: 8px;
