@@ -36,7 +36,7 @@ export default function App() {
     <main className="page-shell">
       <SiteNav isLoggedIn={navState.isLoggedIn} user={navState.user} />
       <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/" element={<Navigate to="/links" replace />} />
         <Route path="/home" element={<Home />} />
         <Route path="/admin-profile" element={<AdminProfile />} />
         <Route path="/feed" element={<Feed />} />

@@ -1173,9 +1173,13 @@ h1 {
 .admin-panel {
   width: min(100%, var(--profile-card-max-width));
   display: grid;
-  gap: 24px;
   justify-self: center;
   padding: 24px 28px;
+}
+
+.admin-panel-content {
+  display: grid;
+  gap: 28px;
 }
 
 .admin-list-section {
