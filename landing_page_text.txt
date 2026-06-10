@@ -1,0 +1,38 @@
+=========================================
+HEADER SECTION COPY
+=========================================
+
+[Main Headline]
+Hobbies, not work.
+
+[Subheadline]
+Welcome to Idle Moments, the simple, cozy, hobby only discussion forum. Share your hobbies, not your work.
+
+
+
+=========================================
+CTA CARD 1: REGISTER
+=========================================
+
+[Card Title]
+Join the party.
+
+[Card Description]
+Take part in the simple online vibes. It's not Instagram, it's not Facebook, it's Idle Moments.
+
+[Button Text]
+Create Account
+
+
+=========================================
+CTA CARD 2: THREADS / CATEGORIES
+=========================================
+
+[Card Title]
+Curated Categories
+
+[Card Description]
+This discussion forum is pruned of all bad vibes. Check to see if your hobby is a thread, or email me at andrewmarshall.dev@proton.me and I'll add it. Slow change means less chaos. Let's be simple.
+
+[Button Text]
+Explore Threads

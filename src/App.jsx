@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import AdminProfile from "./pages/admin-profile/index.jsx";
 import Feed from "./pages/feed/index.jsx";
 import PostDetails from "./pages/post-details/index.jsx";
@@ -13,9 +13,11 @@ import EditProfile from "./pages/edit-profile/index.jsx";
 import Register from "./pages/register/index.jsx";
 import Login from "./pages/login/index.jsx";
 import NewPassword from "./pages/new-password/index.jsx";
+import Home from "./pages/home/index.jsx";
 import { SiteNav } from "./components/navigation/SiteNav.jsx";
 
 export default function App() {
+  const location = useLocation();
   const mockAuth = {
     isLoggedIn: true,
     user: {
@@ -23,12 +25,17 @@ export default function App() {
       avatarVariant: "blue",
     },
   };
+  const navState =
+    location.pathname === "/feed"
+      ? { isLoggedIn: false, user: null }
+      : mockAuth;
 
   return (
     <main className="page-shell">
-      <SiteNav isLoggedIn={mockAuth.isLoggedIn} user={mockAuth.user} />
+      <SiteNav isLoggedIn={navState.isLoggedIn} user={navState.user} />
       <Routes>
-        <Route path="/" element={<Navigate to="/feed" replace />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/admin-profile" element={<AdminProfile />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/post-details" element={<PostDetails />} />

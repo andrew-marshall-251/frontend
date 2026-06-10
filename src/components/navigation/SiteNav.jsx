@@ -105,7 +105,7 @@ export function SiteNav({ isLoggedIn, user }) {
 
   return (
     <header className="site-nav">
-      <Link className="site-nav-brand" to="/feed">
+      <Link className="site-nav-brand" to="/home">
         Idle Moments
       </Link>
 

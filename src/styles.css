@@ -7,19 +7,27 @@
   --medium-max-width: 500px;
   --profile-card-max-width: 500px;
   --page-top-gap: clamp(8px, 4vw, 28px);
+  --nav-height: 75px;
+  --nav-padding-inline-start: 38px;
+  --nav-padding-inline-end: 30px;
   --nav-bg: #3d71c4;
   --nav-fg: #cbd5e1;
   --nav-hover-bg: #1e293b;
   --nav-hover-bg-strong: #334155;
+  --page-bg: #dbeafe;
 }
 
 body {
   margin: 0;
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: #111827;
-  background: #f3f7fb;
+  background-color: var(--page-bg);
+  background-image:
+    linear-gradient(rgb(219 234 254 / 72%), rgb(219 234 254 / 72%)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cdefs%3E%3Cpattern id='diagonal-lines' width='32' height='32' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Cpath d='M 0 0 L 0 32' fill='none' stroke='rgba(37,99,235,0.30)' stroke-width='2.5'/%3E%3Cpath d='M 16 0 L 16 32' fill='none' stroke='rgba(96,165,250,0.45)' stroke-width='1.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='120' height='120' fill='url(%23diagonal-lines)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
 }
 
 .page-shell {
@@ -27,15 +35,89 @@ body {
   padding: clamp(16px, 4vw, 32px);
 }
 
+.home-page {
+  width: min(100%, 1120px);
+  display: grid;
+  place-items: center;
+  gap: 0;
+  margin: 0 auto;
+  padding-top: var(--page-top-gap);
+  position: relative;
+}
+
+.home-hero {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: 58px 24px 28px;
+  text-align: center;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.home-hero h1 {
+  position: relative;
+  max-width: 12ch;
+  color: #0f172a;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 0.95;
+  text-transform: none;
+}
+
+.home-hero h1::before {
+  content: "";
+  position: absolute;
+  top: calc(50% + 45px);
+  left: 50%;
+  width: min(94vw, 980px);
+  height: min(38vw, 340px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(255 255 255 / 92%), rgb(255 255 255 / 70%) 38%, rgb(255 255 255 / 0%) 76%);
+  filter: blur(18px);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.home-eyebrow {
+  margin: 0;
+  color: #1d4ed8;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-subheadline {
+  max-width: 58ch;
+  margin: 0;
+  color: #334155;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.home-hero-button {
+  margin-top: 10px;
+  text-decoration: none;
+}
+
 .site-nav {
   position: relative;
   width: min(100%, 1120px);
+  min-height: var(--nav-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 28px;
   margin: 0 auto 24px;
-  padding: 14px 22px;
+  padding: 14px var(--nav-padding-inline-end) 14px var(--nav-padding-inline-start);
   border: 1px solid #1d4ed8;
   border-radius: 999px;
   background: var(--nav-bg);
@@ -271,13 +353,10 @@ h1 {
 .profile-page,
 .view-threads-page,
 .register-page {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - var(--nav-height));
   display: grid;
   place-items: start center;
   padding-top: var(--page-top-gap);
-}
-
-.view-threads-page {
 }
 
 .auth-form,
