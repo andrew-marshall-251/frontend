@@ -6,6 +6,7 @@
   --panel-max-width: 760px;
   --medium-max-width: 500px;
   --profile-card-max-width: 500px;
+  --page-top-gap: clamp(8px, 4vw, 28px);
   --nav-bg: #3d71c4;
   --nav-fg: #cbd5e1;
   --nav-hover-bg: #1e293b;
@@ -266,24 +267,17 @@ h1 {
 .auth-page,
 .create-post-page,
 .feed-page,
+.post-detail-page,
 .profile-page,
+.view-threads-page,
 .register-page {
   min-height: calc(100vh - 64px);
   display: grid;
-  place-items: center;
+  place-items: start center;
+  padding-top: var(--page-top-gap);
 }
 
 .view-threads-page {
-  min-height: calc(100vh - 64px);
-  display: grid;
-  place-items: start center;
-  padding-top: clamp(8px, 4vw, 28px);
-}
-
-.post-detail-page {
-  min-height: calc(100vh - 64px);
-  display: grid;
-  place-items: start center;
 }
 
 .auth-form,
