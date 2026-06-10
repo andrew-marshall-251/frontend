@@ -564,7 +564,16 @@ h1 {
   text-decoration: none;
 }
 
+.thread-list-link::before,
+.post-preview-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
 .thread-list-item {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
@@ -602,6 +611,8 @@ h1 {
 }
 
 .thread-list-metrics {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -1303,6 +1314,7 @@ h1 {
 }
 
 .post-preview {
+  position: relative;
   display: grid;
   gap: 8px;
   padding: 18px 12px;
@@ -1344,6 +1356,11 @@ h1 {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25;
+}
+
+.post-metrics {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 640px) {
